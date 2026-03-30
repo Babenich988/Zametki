@@ -3,6 +3,12 @@ let add=document.getElementById("add");
 let tasks=[];
 let list=document.getElementById("list");
 let a=0;
+let searchQuery = "";
+let search = document.getElementById("doneSearch");
+search.addEventListener("click", function(){
+    searchQuery = tasksearch.value;
+    updateApp();
+})
 add.addEventListener("click", function () {
     let text = document.getElementById("text").value;
     addTask(text);
