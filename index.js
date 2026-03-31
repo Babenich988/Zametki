@@ -3,12 +3,12 @@ let add=document.getElementById("add");
 let tasks=[];
 let list=document.getElementById("list");
 let a=0;
-let searchQuery = "";
-let search = document.getElementById("doneSearch");
-search.addEventListener("click", function(){
-    searchQuery = tasksearch.value;
-    updateApp();
-})
+//let searchQuery = "";
+// let search = document.getElementById("doneSearch");
+// search.addEventListener("click", function(){
+//     searchQuery = tasksearch.value;
+//     updateApp();
+// })
 add.addEventListener("click", function () {
     let text = document.getElementById("text").value;
     addTask(text);
@@ -24,6 +24,11 @@ function addTask(text){
 }
 function updateApp(){
     renderTask();
+}
+function updateStats(tasks){
+    let total=0;
+    let done=0;
+    total=tasks.length;
 }
 function renderTask(){
     list.innerHTML="";
@@ -74,6 +79,9 @@ function renderTask(){
         if(currentFilter==="done"){
             filteredTasks=tasks.filter(item=>item.done===true)
             updateApp();
+        }
+        if(searchQuery!==""){
+            filteredTasks=filteredTasks.filter(task=>task.text.includes(searchQuery))
         }
         div.append(task.text);
         div.append(del);
